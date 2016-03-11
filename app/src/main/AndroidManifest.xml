@@ -26,7 +26,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Settings"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".Shoppinglist"
+            android:label="@string/title_activity_shoppinglist"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
