@@ -60,8 +60,9 @@ public class MyDBHandler extends SQLiteOpenHelper{
             if(c.getString(c.getColumnIndex("productname"))!= null){
                dbString += c.getString(c.getColumnIndex("productname"));
                 dbString += "\n";
-
             }
+            c.moveToNext();
+
         }
         db.close();
         return dbString;
