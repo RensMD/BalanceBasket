@@ -44,6 +44,7 @@ public class BasketDrawer extends AppCompatActivity
     private ImuFragment imuFragment;
     private JoystickFragment joystickFragment;
     private FollowFragment followFragment;
+    private NewProductActivity newProductActivity;
 
     protected static boolean buttonState;
 
@@ -81,6 +82,9 @@ public class BasketDrawer extends AppCompatActivity
 
             followFragment = new FollowFragment();
             followFragment.setArguments(getIntent().getExtras());
+
+            newProductActivity = new NewProductActivity();
+            newProductActivity.setArguments(getIntent().getExtras());
         }
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -160,7 +164,7 @@ public class BasketDrawer extends AppCompatActivity
         } else if (itemId == R.id.nav_follow) {
             transaction.replace(R.id.basketDrawerFrame, followFragment);
         } else if (itemId == R.id.nav_shopping) {
-
+            transaction.replace(R.id.basketDrawerFrame, newProductActivity);
         } else if (itemId == R.id.nav_settings) {
             Intent settings;
             settings = new Intent(this, Settings_Activity.class);

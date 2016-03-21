@@ -36,8 +36,7 @@ public class ListDataAdapter extends ArrayAdapter{
     @Override
     public int getCount() {
         return super.getCount();
-        return list.size();
-    }
+            }
 
     @Override
     public Object getItem(int position) {

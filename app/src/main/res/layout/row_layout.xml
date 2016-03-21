@@ -16,7 +16,4 @@
         android:id="@+id/text_product_price"
         android:gravity="center"/>
 
-
-
-
 </LinearLayout>

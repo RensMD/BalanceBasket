@@ -7,15 +7,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class UserDbHelper extends SQLiteOpenHelper {
+public class UserDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ProductsDB.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String CREATE_QUERY = "CREATE TABLE " +  UserContract.NewProduct.TABLE_NAME + "(" + COLUMN_ID +
+    private static final String CREATE_QUERY = "CREATE TABLE " +  UserContract.NewProduct.TABLE_NAME + "(" + UserContract.NewProduct.COLUMN_ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + UserContract.NewProduct.PRODUCT_NAME + " TEXT, " +
             UserContract.NewProduct.PRODUCT_PRICE + " TEXT " + ");";
 
-    public UserDbHelper (Context context){
+    public UserDBHelper(Context context){
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
@@ -31,12 +31,12 @@ public class UserDbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void addProduct (String name, int price){
+    public void addProduct (String name, String price, SQLiteDatabase db){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(UserContract.NewProduct.PRODUCT_NAME, name);
         contentValues.put(UserContract.NewProduct.PRODUCT_PRICE, price);
-        db.insert();
+        db.insert(UserContract.NewProduct.TABLE_NAME, null, contentValues);
 
     }
 
@@ -45,7 +45,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
         Cursor cursor;
         String[] projections = {UserContract.NewProduct.PRODUCT_NAME,UserContract.NewProduct.PRODUCT_PRICE};
 
-        db.query(UserContract.NewProduct.TABLE_NAME, projections, null,null,null,null,null)
+        cursor= db.query(UserContract.NewProduct.TABLE_NAME, projections, null,null,null,null,null);
         return cursor;
 
     }
