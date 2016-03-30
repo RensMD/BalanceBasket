@@ -14,11 +14,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class NewProductActivity extends Fragment implements View.OnClickListener {
+public class NewProductFragment extends Fragment implements View.OnClickListener {
     EditText productName, productPrice;
     Context context;
     UserDBHelper userDbHelper;
     SQLiteDatabase sqLiteDatabase;
+    Button AddButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class NewProductActivity extends Fragment implements View.OnClickListener
     public void onViewCreated(View view, Bundle savedInstanceState){
         productName = (EditText) getView().findViewById(R.id.ProductName);
         productPrice = (EditText) getView().findViewById(R.id.ProductPrice);
+        AddButton = (Button) getView().findViewById(R.id.AddButton);
     }
 
     @Override

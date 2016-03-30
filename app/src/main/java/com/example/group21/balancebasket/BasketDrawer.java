@@ -15,16 +15,12 @@ import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 
@@ -44,7 +40,7 @@ public class BasketDrawer extends AppCompatActivity
     private ImuFragment imuFragment;
     private JoystickFragment joystickFragment;
     private FollowFragment followFragment;
-    private NewProductActivity newProductActivity;
+    private DataListActivity dataListActivity;
 
     protected static boolean buttonState;
 
@@ -83,8 +79,8 @@ public class BasketDrawer extends AppCompatActivity
             followFragment = new FollowFragment();
             followFragment.setArguments(getIntent().getExtras());
 
-            newProductActivity = new NewProductActivity();
-            newProductActivity.setArguments(getIntent().getExtras());
+            dataListActivity = new DataListActivity();
+            dataListActivity.setArguments(getIntent().getExtras());
         }
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -164,7 +160,7 @@ public class BasketDrawer extends AppCompatActivity
         } else if (itemId == R.id.nav_follow) {
             transaction.replace(R.id.basketDrawerFrame, followFragment);
         } else if (itemId == R.id.nav_shopping) {
-            transaction.replace(R.id.basketDrawerFrame, newProductActivity);
+            transaction.replace(R.id.basketDrawerFrame, dataListActivity);
         } else if (itemId == R.id.nav_settings) {
             Intent settings;
             settings = new Intent(this, Settings_Activity.class);
