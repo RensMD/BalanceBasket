@@ -75,7 +75,9 @@
                     android:layout_margin="10dp"
                     android:paddingTop="30dp"
                     android:elegantTextHeight="false"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:clickable="false" />
+
 
                 <Button
                     android:layout_width="match_parent"

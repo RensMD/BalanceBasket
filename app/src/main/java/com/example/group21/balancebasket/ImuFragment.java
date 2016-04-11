@@ -160,6 +160,9 @@ public class ImuFragment extends Fragment {
                 if (BasketDrawer.mSensorFusion == null)
                     return;
 
+
+
+
         intPitch = Float.parseFloat(BasketDrawer.mSensorFusion.pitch) ;
         intRoll =  Float.parseFloat(BasketDrawer.mSensorFusion.roll);
         intpitchZero =intPitch - pitchZero;

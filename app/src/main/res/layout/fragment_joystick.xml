@@ -5,13 +5,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
-    tools:showIn="@layout/app_bar_basket_drawer">
+    tools:showIn="@layout/app_bar_basket_drawer"
+    android:background="#E0F2F1">
 
-    <TextView
-        android:id="@+id/textView1"
+
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin" />
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:background="@drawable/layout_shadow">
+
+    <ImageView
+        android:id="@+id/horizontal"
+        android:background="@drawable/forward"
+        android:layout_height="25dp"
+        android:layout_width="25dp"
+        />
+
+    <TextView
+        android:id="@+id/joystickX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/layout_shadow">
+
+    <ImageView
+        android:id="@+id/left"
+        android:background="@drawable/left"
+        android:layout_height="25dp"
+        android:layout_width="25dp"/>
+
+    <TextView
+        android:id="@+id/joystickY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"  />
+
+    </TableRow>
+
+    </TableLayout>
 
     <com.example.group21.balancebasket.JoystickView
         android:id="@+id/joystick"
@@ -19,5 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="15dp" />
+
+
 
 </FrameLayout>

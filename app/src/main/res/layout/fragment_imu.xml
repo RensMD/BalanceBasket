@@ -5,20 +5,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
-    tools:showIn="@layout/app_bar_basket_drawer">
+    tools:showIn="@layout/app_bar_basket_drawer"
+    android:background="#E0F2F1">
 
     <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
+
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:background="@drawable/layout_shadow">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pitch" />
+            <ImageView
+                android:id="@+id/horizontal"
+                android:background="@drawable/forward"
+                android:layout_height="25dp"
+                android:layout_width="25dp"
+                />
+
 
             <TextView
                 android:id="@+id/textView1"
@@ -30,12 +39,20 @@
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/layout_shadow">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/roll" />
+            <ImageView
+                android:id="@+id/left"
+                android:background="@drawable/left"
+                android:layout_height="25dp"
+                android:layout_width="25dp"/>
+
 
             <TextView
                 android:id="@+id/textView2"
@@ -50,9 +67,12 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:text="@string/activate_Button"
-        android:id="@+id/activate_button"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:id="@+id/activate_button"
+        android:background="@drawable/imu_control"/>
+
+
 
     <ProgressBar
         style="?android:attr/progressBarStyleSmall"
