@@ -97,6 +97,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="action_follow_toggle">follow_toggle</string>
     <string name="input">input</string>
+    <string name="Connect_text">Connect</string>
 </resources>
 
 

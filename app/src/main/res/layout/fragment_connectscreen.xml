@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Connect"
+                    android:text="@string/Connect_text"
                     android:id="@+id/Connect_text"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#ffffff" />

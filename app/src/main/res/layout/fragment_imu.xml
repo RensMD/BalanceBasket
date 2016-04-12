@@ -6,7 +6,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer"
-    android:background="#E0F2F1">
+    android:background="#E0F2F1"
+    android:id="@+id/imu_layout">
 
     <TableLayout
         android:id="@+id/table"
@@ -64,22 +65,16 @@
     </TableLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="400dp"
-        android:text="@string/activate_Button"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom"
+        android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/activate_button"
-        android:background="@drawable/imu_control"/>
+        android:background="@drawable/imu_sending"
+/>
 
 
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
-        android:layout_gravity="right|bottom" />
+
 
 
 </FrameLayout>

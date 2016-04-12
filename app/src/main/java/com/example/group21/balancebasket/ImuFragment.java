@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -34,8 +35,8 @@ public class ImuFragment extends Fragment {
     private Button mButton;
     public TextView mPitchView;
     public TextView mRollView;
-    public TextView inputview;
     public TableRow mTableRow;
+    private FrameLayout mLayout;
 
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
@@ -109,6 +110,7 @@ public class ImuFragment extends Fragment {
         mRollView = (TextView) view.findViewById(R.id.textView2);
 //        inputview = (TextView) view.findViewById(R.id.textView3);
         mButton = (Button) view.findViewById(R.id.activate_button);
+        mLayout = (FrameLayout) view.findViewById(R.id.imu_layout);
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() { // Hide the menu icon and tablerow if there is no build in gyroscope in the device
             @Override
@@ -181,6 +183,7 @@ public class ImuFragment extends Fragment {
                 counter++;
                 if (counter > 2) { // Only send data every 150ms time
                     counter = 0;
+
                     if (BasketDrawer.bluetoothService == null)
                         return;
                     if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
@@ -192,18 +195,22 @@ public class ImuFragment extends Fragment {
 //                                lockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendIMUValues + newPitch + ',' + newRoll + ";");
 
-                                mButton.setText(R.string.sendingData);
-                                mButton.setBackgroundColor(Color.parseColor("#009688"));
+                                mButton.setBackgroundResource(R.drawable.imu_sending);
+                                mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
+
+
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
-                                mButton.setText(R.string.notSendingData);
-                                mButton.setBackgroundColor(Color.parseColor("#B2DFDB"));
+
+                                mButton.setBackgroundResource(R.drawable.imu_control);
+                                mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                             }
                         }
                     } else {
-                        mButton.setText(R.string.connectFirst);
-                        mButton.setBackgroundColor(Color.parseColor("#FF3D00"));
+
+                        mButton.setBackgroundResource(R.drawable.imu_connection);
+                        mLayout.setBackgroundColor(Color.parseColor("#ffebee"));
                     }
                 }
             }
