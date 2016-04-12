@@ -10,7 +10,10 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ToggleButton;
+
+import com.google.android.gms.vision.Frame;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +29,7 @@ public class FollowFragment extends Fragment {
     private Runnable mRunnable;
     private int counter = 0;
     private boolean toggleButtonState;
+    private FrameLayout fLayout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,6 +62,8 @@ public class FollowFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_follow, container, false);
 
         fButton = (ToggleButton)view.findViewById(R.id.follow_button);
+        fLayout = (FrameLayout)view.findViewById(R.id.follow_layout);
+
 
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() { // Hide the menu icon and tablerow if there is no build in gyroscope in the device
@@ -101,19 +107,23 @@ public class FollowFragment extends Fragment {
 //                                lockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendFollow + ";");
                                 BasketDrawer.follow = true;
-                                fButton.setText(R.string.followModeOn);
-                                fButton.setBackgroundColor(Color.parseColor("#009688"));
+                                fButton.setBackgroundResource(R.drawable.follow_following);
+                                fLayout.setBackgroundColor((Color.parseColor("#E0F2F1")));
+
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
                                 BasketDrawer.follow = false;
-                                fButton.setText(R.string.followModeOff);
-                                fButton.setBackgroundColor(Color.parseColor("#B2DFDB"));
+
+                                fButton.setBackgroundResource(R.drawable.follow_following);
+                                fLayout.setBackgroundColor((Color.parseColor("#E0F2F1")));
+
+
                             }
                         }
                     } else {
-                        fButton.setText(R.string.connectFirst);
-                        fButton.setBackgroundColor(Color.parseColor("#FF3D00"));
+                        fButton.setBackgroundResource(R.drawable.follow_blue);
+                        fLayout.setBackgroundColor((Color.parseColor("#ffebee")));
                     }
                 }
             }

@@ -27,6 +27,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
     DecimalFormat d = (DecimalFormat) NumberFormat.getNumberInstance(Locale.ENGLISH);
     JoystickView mJoystick;
     TextView mText1;
+    TextView mText2;
 
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
@@ -68,7 +69,8 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         this.joystickReleased = joystickReleased;
         this.xValue = xValue;
         this.yValue = yValue;
-        mText1.setText("x: " + d.format(xValue) + " y: " + d.format(yValue));
+        mText1.setText( d.format(xValue));
+        mText2.setText( d.format(yValue));
     }
 
     @Override
@@ -80,8 +82,11 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         mJoystick = (JoystickView) v.findViewById(R.id.joystick);
         mJoystick.setOnJoystickChangeListener(this);
 
-        mText1 = (TextView) v.findViewById(R.id.textView1);
-        mText1.setText(R.string.defaultJoystickValue);
+        mText1 = (TextView) v.findViewById(R.id.joystickX);
+        mText1.setText(R.string.defaultJoystickValue1);
+
+        mText2 = (TextView) v.findViewById(R.id.joystickY);
+        mText2.setText(R.string.defaultJoystickValue2);
 
         BasketDrawer.joystickReleased = true;
 

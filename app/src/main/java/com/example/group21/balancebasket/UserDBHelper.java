@@ -53,6 +53,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, contentValues);
     }
 
+    // delete product from the database
     public boolean removeProduct (String name){
         SQLiteDatabase db = getWritableDatabase();
         String[] whereArgs = new String[] {name};

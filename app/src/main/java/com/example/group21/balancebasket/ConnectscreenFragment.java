@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.Vector;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +39,7 @@ public class ConnectscreenFragment extends Fragment {
     private static Button followButton;
     private static Button shoppinglistButton;
     private static TextView connectionText;
+    private static TextView connectText;
     private static ProgressBar progressBar;
     private static LinearLayout connectionlayout;
 //    private LinearLayout connection_status;
@@ -85,9 +89,11 @@ public class ConnectscreenFragment extends Fragment {
             followButton.setEnabled(true);
 
 
-            connectionText.setText("Connection Established!");
+            connectionText.setText("");
+            connectText.setText("");
             //TODO: change icon to check
             progressBar.setVisibility(ProgressBar.INVISIBLE);
+
 
             connectionlayout.setBackgroundResource(R.drawable.connected);
 
@@ -108,8 +114,6 @@ public class ConnectscreenFragment extends Fragment {
             connectionText.setText("Establishing Connection...");
             progressBar.setVisibility(ProgressBar.VISIBLE);
             connectionlayout.setBackgroundResource(R.drawable.not_connected);
-//            LinearLayout.setBackgroundResource(R.drawable.connected);
-
 
         }
     }
@@ -126,6 +130,7 @@ public class ConnectscreenFragment extends Fragment {
         shoppinglistButton = (Button) view.findViewById(R.id.List_Button);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         connectionText = (TextView) view.findViewById(R.id.Connection_text);
+        connectText = (TextView) view.findViewById(R.id.Connect_text);
         connectionlayout = (LinearLayout) view.findViewById(R.id.connection_status);
 //        chooseText = (TextView) view.findViewById(R.id.choose_Text);
 //        connection = (LinearLayout) view.findViewById(R.id.connection_status);

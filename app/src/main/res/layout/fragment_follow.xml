@@ -2,18 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.group21.balancebasket.FollowFragment">
+    tools:context="com.example.group21.balancebasket.FollowFragment"
+    android:id="@+id/follow_layout"
+    android:background="#E0F2F1"
+>
 
     <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Follow"
         android:textOn=""
         android:textOff=""
         android:id="@+id/follow_button"
         android:layout_gravity="bottom"
+        android:background="@drawable/follow_start"
         />
-        <!--android:background="@drawable/toggle_button_background"-->
-
 
 </FrameLayout>

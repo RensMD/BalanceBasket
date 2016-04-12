@@ -251,7 +251,7 @@ public class BasketDrawer extends AppCompatActivity
         super.onStart();
     }
 
-    // Setup connection with Bluetooth service
+//     Setup connection with Bluetooth service
     protected static ServiceConnection blueConnection = new ServiceConnection() {
 
         @Override
@@ -264,6 +264,7 @@ public class BasketDrawer extends AppCompatActivity
         public void onServiceDisconnected(ComponentName name)
         {
             bluetoothService = null;
+
         }
     };
 

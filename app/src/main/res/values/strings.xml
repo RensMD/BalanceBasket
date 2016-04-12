@@ -21,7 +21,8 @@
 
     <!-- Joystick Fragment -->
     <string name="joystick_fragment">Joystick Fragment</string>
-    <string name="defaultJoystickValue">x: 0 y: 0</string>
+    <string name="defaultJoystickValue1">0</string>
+    <string name="defaultJoystickValue2">0</string>
     <string name="choose_Text"></string>
 
     <!-- IMU Fragment -->
@@ -96,6 +97,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="action_follow_toggle">follow_toggle</string>
     <string name="input">input</string>
+    <string name="Connect_text">Connect</string>
 </resources>
 
 

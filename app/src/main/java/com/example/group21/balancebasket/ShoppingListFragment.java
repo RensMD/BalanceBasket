@@ -33,11 +33,11 @@ public class ShoppingListFragment extends Fragment {
     private Cursor cursor;
     private ListDataAdapter listDataAdapter;
     private DataProvider dataProvider;
-    private EditText Prname;
-    private EditText Prprice;
-    private Button AddButton;
-    private Button RemoveButton;
-    private TextView TotalPrice;
+    private EditText productName;
+    private EditText productPrice;
+    private Button addProductButton;
+    private Button removeProductButton;
+    private TextView totalPrice;
 
     public ShoppingListFragment() {
         // Required empty public constructor
@@ -48,66 +48,87 @@ public class ShoppingListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         listView = (ListView) view.findViewById(R.id.ListView);
-        TotalPrice = (TextView) view.findViewById(R.id.TotalPriceView);
-        Prname = (EditText) view.findViewById(R.id.NameEditText);
-        Prprice = (EditText) view.findViewById(R.id.PriceEditText);
-        AddButton = (Button) view.findViewById(R.id.AddButton);
-        AddButton.setOnClickListener(new View.OnClickListener() {
+        totalPrice = (TextView) view.findViewById(R.id.TotalPriceView);
+        productName = (EditText) view.findViewById(R.id.NameEditText);
+        productPrice = (EditText) view.findViewById(R.id.PriceEditText);
+        addProductButton = (Button) view.findViewById(R.id.AddButton);
+        addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double price = Double.valueOf(Prprice.getText().toString());
-                String name = Prname.getText().toString();
-                if((name.length() == 0)){ //TODO this should also happen when no price is entered or when both fields are empty
+                String name = "";
+                Double price = 0.0;
+                // secure code against invalid input
+                try{
+                    name = productName.getText().toString();
+                    price = Double.valueOf(productPrice.getText().toString());
+                } catch(Exception e) {
                     Toast.makeText(getActivity(), "Nothing to add", Toast.LENGTH_SHORT).show();
                 }
 
-                else{
+                // add product only when name and price are entered
+                if((name == "" || price == 0.0 )){
+                    Toast.makeText(getActivity(), "Nothing to add", Toast.LENGTH_SHORT).show();
+                }else {
+                    userDbHelper.addProduct(sqLiteDatabase, name, price) ;
+                    // refresh values in shopping list table
+                    provideData();
+                    // clear input fields
+                    productName.setText("");
+                    productPrice.setText("");
+    //              DBHelper = new UserDBHelper(getContext());
+    //              db = DBHelper.getWritableDatabase();
+    //
+    //              String totalp = userDbHelper.calculateTotalPrice(db).total.getString;
+    //              totalPrice.setText(totalP); //TODO Get the program to print the total price in the textView TotalPrice
                     Toast.makeText(getActivity(), name + " added to shoppinglist", Toast.LENGTH_SHORT).show();
-                userDbHelper.addProduct(sqLiteDatabase, name, price) ;  //TODO Look into invalidate or find other solution to reload the table
-                    Prname.setText("");
-                Prprice.setText("");
-//              DBHelper = new UserDBHelper(getContext());
-//              db = DBHelper.getWritableDatabase();
-//
-//              String totalp = userDbHelper.calculateTotalPrice(db).total.getString;
-//              TotalPrice.setText(totalP); //TODO Get the program to print the total price in the textView TotalPrice
-                }}
+                }
+            }
         });
-        RemoveButton = (Button) view.findViewById(R.id.RemoveButton);
-        RemoveButton.setOnClickListener(new View.OnClickListener(){
+
+        removeProductButton = (Button) view.findViewById(R.id.RemoveButton);
+        removeProductButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v) {
-                String name = Prname.getText().toString();
+                String name = productName.getText().toString();
 
                 if((name.length() == 0)){
                     Toast.makeText(getActivity(), "Nothing to remove", Toast.LENGTH_SHORT).show();
                 }
 
                 else{
-                Toast.makeText(getActivity(), name + " removed from shoppinglist", Toast.LENGTH_SHORT).show();
-                userDbHelper.removeProduct(name);
-                    Prname.setText("");
-                Prprice.setText("");
+                    boolean isProductRemoved = userDbHelper.removeProduct(name);
+                    if(isProductRemoved) {
+                        provideData();
+                        Toast.makeText(getActivity(), name + " removed from shoppinglist", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), name + " is not removed from shoppinglist", Toast.LENGTH_SHORT).show();
+                    }
+
+                productName.setText("");
+                productPrice.setText("");
              //   userDbHelper.calculateTotalPrice();
             }}
 
         });
-        listDataAdapter = new ListDataAdapter(this.getContext(), R.layout.row_layout);
         provideData();
-        listView.setAdapter(listDataAdapter);
         return view;
     }
 
     // get products from the database and add them to the shopping list
     private void provideData() {
-        dataProvider = new DataProvider();
-        // init SQLiteOpenHelper
-        userDbHelper = new UserDBHelper(this.getContext());
-        // get a readable and writable database
-        sqLiteDatabase = userDbHelper.getWritableDatabase();
-
+        if(dataProvider == null || userDbHelper == null || sqLiteDatabase == null) {
+            dataProvider = new DataProvider();
+            // init SQLiteOpenHelper
+            userDbHelper = new UserDBHelper(this.getContext());
+            // get a readable and writable database
+            sqLiteDatabase = userDbHelper.getWritableDatabase();
+        }
         // get products from the database
         List<Product> products = userDbHelper.getProducts(sqLiteDatabase);
+
+        // empty listDataAdapter before filling adapter with new values from database
+        listDataAdapter = new ListDataAdapter(this.getContext(), R.layout.row_layout);
+        listView.setAdapter(listDataAdapter);
 
         // add products from list to dataprovider
         for (Product product:products) {
