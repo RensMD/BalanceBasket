@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.Vector;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -140,7 +143,7 @@ public class ConnectscreenFragment extends Fragment {
         makeShoppinglistButtonListener(transaction);
 
         // get state of bluetooth connection on start
-        boolean isConnected = true;
+        boolean isConnected = false;
         if (BasketDrawer.isIOIOConnected()) {
             isConnected = true;
         }

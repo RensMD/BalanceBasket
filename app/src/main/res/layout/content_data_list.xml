@@ -12,12 +12,22 @@
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/fragment_shopping_list">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_margin="20dp"
+        android:text="@string/shopping_list_fragment_title"
+        android:id="@+id/textView" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:id="@+id/ListView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="46dp">
     </ListView>
 
     <EditText
