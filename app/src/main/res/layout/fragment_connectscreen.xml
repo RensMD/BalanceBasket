@@ -24,7 +24,9 @@
                 android:layout_height="250dp"
                 android:orientation="vertical"
                 android:background="@drawable/connected"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:weightSum="1"
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -45,11 +47,14 @@
                     android:textColor="#96ffffff" />
 
                 <ProgressBar
-                    android:layout_width="wrap_content"
+                    android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/progressBar"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp" />
+                    android:layout_weight="0.17"
+                    android:progressTint="@color/abc_primary_text_material_dark"
+                    android:progressTintMode="src_over"
+                    android:layout_margin="30dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -60,7 +65,6 @@
                 android:gravity="bottom">
 
                 <Button
-                    style="@android:style/Widget.Material.Button"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
                     android:text="Motion"
@@ -68,7 +72,7 @@
                     android:layout_alignTop="@+id/Joystick_Button"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/motion"
+                    android:drawableTop="@drawable/move"
                     android:onClick="Start_Accelerometer_Activity"
                     android:background="#0e009688"
                     android:textColor="#FF009688"
@@ -76,7 +80,7 @@
                     android:paddingTop="30dp"
                     android:elegantTextHeight="false"
                     android:gravity="center"
-                    android:clickable="false" />
+                     />
 
 
                 <Button
@@ -85,7 +89,8 @@
                     android:text="Joystick"
                     android:id="@+id/Joystick_Button"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/joystick_arrows"
+                    android:drawableTop="@drawable/cursor_move"
+                    android:scaleWidth="fill_horizontal"
                     android:onClick="Start_Joystick_Activity"
                     android:background="#0e009688"
                     android:textColor="@color/colorPrimary"

@@ -85,7 +85,7 @@ public class ConnectscreenFragment extends Fragment {
             followButton.setEnabled(true);
 
 
-            connectionText.setText("Connection Established!");
+            connectionText.setText("");
             //TODO: change icon to check
             progressBar.setVisibility(ProgressBar.INVISIBLE);
 
@@ -108,8 +108,6 @@ public class ConnectscreenFragment extends Fragment {
             connectionText.setText("Establishing Connection...");
             progressBar.setVisibility(ProgressBar.VISIBLE);
             connectionlayout.setBackgroundResource(R.drawable.not_connected);
-//            LinearLayout.setBackgroundResource(R.drawable.connected);
-
 
         }
     }
