@@ -38,6 +38,7 @@ public class ConnectscreenFragment extends Fragment {
     private static Button joystickButton;
     private static Button followButton;
     private static Button shoppinglistButton;
+    private static Path iconFollow;
     private static TextView connectionText;
     private static TextView connectText;
     private static ProgressBar progressBar;
@@ -95,7 +96,7 @@ public class ConnectscreenFragment extends Fragment {
             progressBar.setVisibility(ProgressBar.INVISIBLE);
 
 
-            connectionlayout.setBackgroundResource(R.drawable.connected);
+//            connectionlayout.setBackgroundResource(R.drawable.connected);
 
         }
         else{
@@ -103,9 +104,10 @@ public class ConnectscreenFragment extends Fragment {
             joystickButton.setEnabled(false);
             followButton.setEnabled(false);
 
-            motionButton.setBackgroundColor(Color.parseColor("#ebebeb"));
-            joystickButton.setBackgroundColor(Color.parseColor("#ebebeb"));
-            followButton.setBackgroundColor(Color.parseColor("#ebebeb"));
+//            motionButton.setBackgroundColor(Color.parseColor("#ebebeb"));
+//            joystickButton.setBackgroundColor(Color.parseColor("#ebebeb"));
+//            followButton.setBackgroundColor(Color.parseColor("#ebebeb"));
+
 
             motionButton.setTextColor(Color.parseColor("#969696"));
             joystickButton.setTextColor(Color.parseColor("#969696"));
@@ -132,6 +134,7 @@ public class ConnectscreenFragment extends Fragment {
         connectionText = (TextView) view.findViewById(R.id.Connection_text);
         connectText = (TextView) view.findViewById(R.id.Connect_text);
         connectionlayout = (LinearLayout) view.findViewById(R.id.connection_status);
+
 //        chooseText = (TextView) view.findViewById(R.id.choose_Text);
 //        connection = (LinearLayout) view.findViewById(R.id.connection_status);
 
@@ -143,7 +146,7 @@ public class ConnectscreenFragment extends Fragment {
         makeShoppinglistButtonListener(transaction);
 
         // get state of bluetooth connection on start
-        boolean isConnected = false;
+        boolean isConnected = true;
         if (BasketDrawer.isIOIOConnected()) {
             isConnected = true;
         }
