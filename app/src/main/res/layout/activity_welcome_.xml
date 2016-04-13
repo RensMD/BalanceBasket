@@ -3,11 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.group21.balancebasket.Welcome_Activity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/basket"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/welcome_text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcome_text"
+        android:id="@+id/welcome_text"
+        android:gravity="center"
+        android:textSize="23dp"
+        android:layout_above="@+id/please_text"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_alignStart="@+id/please_text"
+        android:layout_alignEnd="@+id/please_text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/continue_text"
+        android:id="@+id/please_text"
+        android:gravity="center"
+        android:layout_above="@+id/terms_text"
+        android:layout_alignStart="@+id/agree_button"
+        android:layout_marginTop="3dp"
+        android:layout_alignEnd="@+id/agree_button" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Terms and Conditions"
+        android:id="@+id/terms_text"
+        android:gravity="center"
+        android:layout_above="@+id/agree_button"
+        android:layout_alignStart="@+id/agree_button"
+        android:layout_alignEnd="@+id/agree_button"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/colorAccent"
+        android:onClick="show_Terms"/>
 
     <Button
         android:layout_width="match_parent"
@@ -19,38 +67,6 @@
         android:onClick="Start_Connect_Activity"
         android:textColor="@color/colorWhite"
         android:background="@drawable/button_green"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/welcome_text"
-        android:id="@+id/welcome_text"
-        android:gravity="center"
-        android:layout_above="@+id/please_text"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/continue_text"
-        android:id="@+id/please_text"
-        android:gravity="center"
-
-        android:layout_marginBottom="10dp"
-        android:layout_above="@+id/agree_button"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/basket"
-        android:layout_above="@+id/welcome_text"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_margin="16dp"/>
 
 </RelativeLayout>

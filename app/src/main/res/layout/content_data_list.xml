@@ -4,87 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/fragment_shopping_list">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_margin="20dp"
-        android:text="@string/shopping_list_fragment_title"
-        android:id="@+id/textView" />
-
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
         android:id="@+id/ListView"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="46dp">
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/linearLayout2">
     </ListView>
 
-    <EditText
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/NameEditText"
-        android:hint="Name"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/TotalPriceView"
-        android:layout_alignStart="@+id/AddButton" />
+        android:orientation="horizontal"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:id="@+id/linearLayout2"
+        android:padding="14dp"
+        android:background="@color/colorPrimary">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/NameEditText"
+        android:hint="Name:"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/PriceEditText"
-        android:layout_alignBottom="@+id/NameEditText"
+        android:hint="Price:"
+        android:layout_alignTop="@+id/NameEditText"
         android:layout_toEndOf="@+id/NameEditText"
-        android:layout_marginTop="20dp"
-        android:hint="Price" />
+        android:layout_weight="1"
+        android:layout_margin="16dp"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/AddButton"
-        android:onClick="OnAddClicked"
-        android:layout_alignTop="@+id/RemoveButton"
-        android:layout_alignStart="@+id/ListView"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"/>
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#e9e9e9"
+        android:padding="14dp"
+        android:id="@+id/linearLayout">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:onClick="OnRemoveClicked"
-        android:text="Remove"
-        android:id="@+id/RemoveButton"
-        android:layout_below="@+id/PriceEditText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/AddButton"
+            android:onClick="OnAddClicked"
+            android:background="@drawable/button_green"
+            android:textColor="@color/colorWhite"
+            android:drawableLeft="@drawable/ic_add_circle_outline_24dp"
+            android:padding="20dp"
+            android:layout_margin="16dp"
+            android:layout_alignTop="@+id/RemoveButton"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"/>
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/TotalPriceView"
-        android:password="true"
-        android:hint="Total Price"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/ListView"
-        android:layout_alignEnd="@+id/PriceEditText"
-        android:layout_marginRight="10dp" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="OnRemoveClicked"
+            android:text="Remove"
+            android:id="@+id/RemoveButton"
+            android:background="@drawable/button_green"
+            android:textColor="@color/colorWhite"
+            android:drawableRight="@drawable/ic_remove_circle_outline_24dp"
+            android:padding="20dp"
+            android:layout_margin="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1"/>
 
+    </LinearLayout>
 
 </RelativeLayout>

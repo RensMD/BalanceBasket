@@ -33,10 +33,22 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/Connect_text"
-                    android:textSize="50dp"
+                    android:textSize="51dp"
                     android:id="@+id/Connect_text"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#ffffff" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="24dp"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/colorWhite"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,17 +58,7 @@
                     android:text="@string/Connection_Text"
                     android:id="@+id/Connection_text"
                     android:layout_gravity="center_horizontal"
-                    android:textColor="#96ffffff" />
-
-                <ProgressBar
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBar"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.17"
-                    android:progressTint="@color/abc_primary_text_material_dark"
-                    android:progressTintMode="src_over"
-                    android:layout_margin="30dp" />
+                    android:textColor="#e9e9e9" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:background="#e1e1e1"
+            android:background="#e9e9e9"
             android:layout_gravity="bottom">
 
             <Button

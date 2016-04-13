@@ -82,10 +82,10 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         mJoystick = (JoystickView) v.findViewById(R.id.joystick);
         mJoystick.setOnJoystickChangeListener(this);
 
-        mText1 = (TextView) v.findViewById(R.id.joystickX);
+        mText1 = (TextView) v.findViewById(R.id.joystickY);
         mText1.setText(R.string.defaultJoystickValue1);
 
-        mText2 = (TextView) v.findViewById(R.id.joystickY);
+        mText2 = (TextView) v.findViewById(R.id.joystickX);
         mText2.setText(R.string.defaultJoystickValue2);
 
         BasketDrawer.joystickReleased = true;
@@ -104,6 +104,8 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
     @Override
     public void onResume() {
         super.onResume();
+        d.setMaximumFractionDigits(1);
+        d.setMinimumFractionDigits(1);
         getActivity().bindService(new Intent(getActivity(), Bluetooth.class), BasketDrawer.blueConnection, Context.BIND_AUTO_CREATE);
 
         mJoystick.invalidate();

@@ -130,8 +130,8 @@ public class ImuFragment extends Fragment {
     @Override
     public void onResume() {
         d.setRoundingMode(RoundingMode.HALF_UP);
-        d.setMaximumFractionDigits(3);
-        d.setMinimumFractionDigits(3);
+        d.setMaximumFractionDigits(1);
+        d.setMinimumFractionDigits(1);
         super.onResume();
         getActivity().bindService(new Intent(getActivity(), Bluetooth.class), BasketDrawer.blueConnection, Context.BIND_AUTO_CREATE);
         mRunnable = new Runnable() {

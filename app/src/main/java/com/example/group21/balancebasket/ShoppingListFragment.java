@@ -48,7 +48,7 @@ public class ShoppingListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         listView = (ListView) view.findViewById(R.id.ListView);
-        totalPrice = (TextView) view.findViewById(R.id.TotalPriceView);
+        //totalPrice = (TextView) view.findViewById(R.id.TotalPriceView);
         productName = (EditText) view.findViewById(R.id.NameEditText);
         productPrice = (EditText) view.findViewById(R.id.PriceEditText);
         addProductButton = (Button) view.findViewById(R.id.AddButton);

@@ -4,13 +4,13 @@
     <string name="app_name">BalanceBasket</string>
 
     <!-- Welcome -->
-    <string name="welcome_text">Welcome to Balance Basket</string>
-    <string name="continue_text">Please agree to the terms and conditions to continue.</string>
+    <string name="welcome_text">Welcome to the Balance Basket App</string>
+    <string name="continue_text">To start using the app, first please agree to the:</string>
     <string name="agree_button">Agree</string>
 
     <!-- Connect -->
     <string name="title_activity_connect__screen">Connect Screen</string>
-    <string name="Connect_Text">Connect</string>
+    <string name="Connect_text">Connecting</string>
     <string name="Connection_Text">Establishing Connection...</string>
 
     <!-- Basket drawer -->
@@ -38,7 +38,6 @@
     <string name="follow_fragment">Follow Fragment</string>
     <string name="followModeOn">Following</string>
     <string name="followModeOff">Toggle to follow</string>
-
 
     <!-- Strings related to Settings -->
     <string name="title_activity_settings_">Settings</string>
@@ -97,7 +96,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="action_follow_toggle">follow_toggle</string>
     <string name="input">input</string>
-    <string name="Connect_text">Connect</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_text">A Terms of Service Agreement is a set of regulations that users must agree to follow in order to use a service. Terms of Use is often named Terms of Service and sometimes Terms and Conditions, as well as Disclaimer, mostly when addressing website usage.</string>
 </resources>
 
 
