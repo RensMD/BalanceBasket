@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.group21.balancebasket.Connect_Screen">
+    tools:context="com.example.group21.balancebasket.ConnectscreenFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,8 @@
 
             <LinearLayout
                 android:id="@+id/connection_status"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:orientation="vertical"
                 android:background="@drawable/connected"
                 android:layout_marginTop="20dp"
@@ -33,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/Connect_text"
+                    android:textSize="50dp"
                     android:id="@+id/Connect_text"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#ffffff" />
@@ -40,6 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="22dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Connection_Text"
                     android:id="@+id/Connection_text"
@@ -75,13 +77,12 @@
                     android:drawableTop="@drawable/move"
                     android:onClick="Start_Accelerometer_Activity"
                     android:background="@drawable/button_green"
-                    android:textColor="#FF009688"
+                    android:textColor="@color/colorWhite"
                     android:layout_margin="10dp"
                     android:paddingTop="30dp"
                     android:elegantTextHeight="false"
                     android:gravity="center"
                      />
-
 
                 <Button
                     android:layout_width="match_parent"
@@ -92,7 +93,7 @@
                     android:drawableTop="@drawable/cursor_move"
                     android:scaleWidth="fill_horizontal"
                     android:onClick="Start_Joystick_Activity"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
                     android:background="@drawable/button_green"
                     android:layout_margin="10dp"
                     android:paddingTop="30dp"
@@ -111,7 +112,7 @@
                     android:drawableTop="@drawable/follow"
                     android:onClick="Start_Follow_Activity"
                     android:background="@drawable/button_green"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
                     android:layout_margin="10dp"
                     android:paddingTop="30dp"
                     android:elegantTextHeight="false"
@@ -136,7 +137,7 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/cart"
                 android:textColor="#ffffff"
-                android:background="#FF009688"
+                android:background="@drawable/button_green"
                 android:padding="20dp" />
         </TableRow>
 

@@ -45,7 +45,6 @@ public class ConnectscreenFragment extends Fragment {
     private static LinearLayout connectionlayout;
 //    private LinearLayout connection_status;
 
-
     private OnFragmentInteractionListener mListener;
     private BroadcastReceiver receiver;
 
@@ -88,16 +87,11 @@ public class ConnectscreenFragment extends Fragment {
             motionButton.setEnabled(true);
             joystickButton.setEnabled(true);
             followButton.setEnabled(true);
-
-
             connectionText.setText("");
             connectText.setText("");
             //TODO: change icon to check
             progressBar.setVisibility(ProgressBar.INVISIBLE);
-
-
-//            connectionlayout.setBackgroundResource(R.drawable.connected);
-
+            connectionlayout.setBackgroundResource(R.drawable.connected);
         }
         else{
             motionButton.setEnabled(false);
@@ -108,15 +102,12 @@ public class ConnectscreenFragment extends Fragment {
 //            joystickButton.setBackgroundColor(Color.parseColor("#ebebeb"));
 //            followButton.setBackgroundColor(Color.parseColor("#ebebeb"));
 
-
-            motionButton.setTextColor(Color.parseColor("#969696"));
-            joystickButton.setTextColor(Color.parseColor("#969696"));
-            followButton.setTextColor(Color.parseColor("#969696"));
-
+            motionButton.setTextColor(Color.parseColor("#ffffff"));
+            joystickButton.setTextColor(Color.parseColor("#ffffff"));
+            followButton.setTextColor(Color.parseColor("#ffffff"));
             connectionText.setText("Establishing Connection...");
             progressBar.setVisibility(ProgressBar.VISIBLE);
-            connectionlayout.setBackgroundResource(R.drawable.not_connected);
-
+            connectionlayout.setBackgroundResource(R.drawable.connect);
         }
     }
 
@@ -146,15 +137,13 @@ public class ConnectscreenFragment extends Fragment {
         makeShoppinglistButtonListener(transaction);
 
         // get state of bluetooth connection on start
-        boolean isConnected = true;
+        boolean isConnected = false;
         if (BasketDrawer.isIOIOConnected()) {
             isConnected = true;
         }
-
         // set initial button state
         shoppinglistButton.setEnabled(true);
         changeButtonState(isConnected);
-
         return view;
     }
 
@@ -207,7 +196,6 @@ public class ConnectscreenFragment extends Fragment {
             }
         });
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -263,7 +251,6 @@ public class ConnectscreenFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

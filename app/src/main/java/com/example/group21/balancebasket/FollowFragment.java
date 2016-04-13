@@ -30,7 +30,6 @@ public class FollowFragment extends Fragment {
     private int counter = 0;
     private boolean toggleButtonState;
     private FrameLayout fLayout;
-
     private OnFragmentInteractionListener mListener;
 
     public FollowFragment() {

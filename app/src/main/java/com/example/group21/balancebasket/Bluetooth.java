@@ -29,9 +29,7 @@ public class Bluetooth extends IOIOService {
     private static byte[] information = new byte[1];
     public static String input;
     public static String[] dataInput = new String[30];
-
     private final IBinder blueBinder =  new BlueBinder();
-
     private LocalBroadcastManager broadcaster;
 
     // Constants that indicate the current connection state

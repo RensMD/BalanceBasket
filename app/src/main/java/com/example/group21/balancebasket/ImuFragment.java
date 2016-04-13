@@ -21,15 +21,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ImuFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ImuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ImuFragment extends Fragment {
 
     private Button mButton;
@@ -72,15 +63,6 @@ public class ImuFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ImuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ImuFragment newInstance(String param1, String param2) {
         ImuFragment fragment = new ImuFragment();
         Bundle args = new Bundle();
@@ -124,8 +106,6 @@ public class ImuFragment extends Fragment {
 
         BasketDrawer.buttonState = false;
 
-
-
         mButton.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -161,9 +141,6 @@ public class ImuFragment extends Fragment {
                 mHandler.postDelayed(this, 50); // Update IMU data every 50ms
                 if (BasketDrawer.mSensorFusion == null)
                     return;
-
-
-
 
         intPitch = Float.parseFloat(BasketDrawer.mSensorFusion.pitch) ;
         intRoll =  Float.parseFloat(BasketDrawer.mSensorFusion.roll);

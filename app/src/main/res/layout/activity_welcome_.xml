@@ -17,7 +17,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="Start_Connect_Activity"
-        android:background="@color/material_deep_teal_500"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_green"
         />
 
 
