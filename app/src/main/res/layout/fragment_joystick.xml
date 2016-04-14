@@ -13,75 +13,73 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:padding="20dp">
 
-    <TableLayout
-        android:id="@+id/table"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_weight="1"
+            android:id="@+id/table"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:padding="20dp"
-            android:background="@drawable/layout_shadow">
-
-            <ImageView
-                android:id="@+id/horizontal"
-                android:background="@drawable/forward"
-                android:layout_height="25dp"
-                android:layout_width="25dp"
-                android:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:id="@+id/joystickX"
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25dp"/>
+                android:padding="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/layout_shadow">
 
-        </TableRow>
+                <ImageView
+                    android:id="@+id/horizontal"
+                    android:background="@drawable/forward"
+                    android:layout_height="25dp"
+                    android:layout_width="25dp"
+                    android:layout_gravity="center_vertical"/>
 
-    </TableLayout>
+                <TextView
+                    android:id="@+id/joystickX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="25dp"/>
 
+            </TableRow>
 
+        </TableLayout>
 
-    <TableLayout
+        <TableLayout
+            android:layout_weight="1"
+            android:id="@+id/table2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content">
 
-        android:id="@+id/table2"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        >
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:padding="20dp"
-            android:background="@drawable/layout_shadow">
-
-            <ImageView
-                android:id="@+id/left"
-                android:background="@drawable/left"
-                android:layout_height="25dp"
-                android:layout_width="25dp"
-                android:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:id="@+id/joystickY"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="20dp"
                 android:layout_marginLeft="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25dp"/>
+                android:background="@drawable/layout_shadow">
 
-        </TableRow>
+                <ImageView
+                    android:id="@+id/left"
+                    android:background="@drawable/left"
+                    android:layout_height="25dp"
+                    android:layout_width="25dp"
+                    android:layout_gravity="center_vertical"/>
 
-    </TableLayout>
+                <TextView
+                    android:id="@+id/joystickY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="25dp"/>
+
+            </TableRow>
+
+        </TableLayout>
+
     </LinearLayout>
-
 
     <com.example.group21.balancebasket.JoystickView
         android:id="@+id/joystick"
