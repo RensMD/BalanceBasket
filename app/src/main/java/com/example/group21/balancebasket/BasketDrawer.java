@@ -160,7 +160,9 @@ public class BasketDrawer extends AppCompatActivity
             if(!follow){
                 item.setIcon(R.drawable.ic_follow_on);
                 follow=true;
-                transaction.add(R.id.basketDrawerFrame, followFragment);
+                if(!this.followFragment.isAdded()) {
+                    transaction.add(R.id.basketDrawerFrame, followFragment);
+                }
             } else {
                 item.setIcon(R.drawable.ic_portable_wifi_off_24dp);
                 follow=false;
