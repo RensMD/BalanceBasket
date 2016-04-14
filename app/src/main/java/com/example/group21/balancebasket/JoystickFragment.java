@@ -1,6 +1,7 @@
 package com.example.group21.balancebasket;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -28,6 +30,8 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
     JoystickView mJoystick;
     TextView mText1;
     TextView mText2;
+    FrameLayout jLayout;
+
 
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
@@ -88,6 +92,9 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         mText2 = (TextView) v.findViewById(R.id.joystickX);
         mText2.setText(R.string.defaultJoystickValue2);
 
+        jLayout = (FrameLayout) v.findViewById(R.id.joystick_layout);
+        jLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+
         BasketDrawer.joystickReleased = true;
 
         return v;
@@ -118,6 +125,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
                 if (BasketDrawer.bluetoothService == null)
                     return;
                 if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED) {
+                   jLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                    if (joystickReleased || (xValue == 0 && yValue == 0))
                        BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
                    else {
@@ -125,7 +133,10 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
                        BasketDrawer.bluetoothService.write(message);
                         }
                     }
+                else{
+                    jLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                 }
+            }
         };
         mHandler.postDelayed(mRunnable, 150); // Send data every 150ms
     }

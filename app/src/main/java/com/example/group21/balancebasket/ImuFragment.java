@@ -93,6 +93,10 @@ public class ImuFragment extends Fragment {
 //        inputview = (TextView) view.findViewById(R.id.textView3);
         mButton = (Button) view.findViewById(R.id.activate_button);
         mLayout = (FrameLayout) view.findViewById(R.id.imu_layout);
+
+        mButton.setBackgroundResource(R.drawable.no_connection);
+        mLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() { // Hide the menu icon and tablerow if there is no build in gyroscope in the device
             @Override
@@ -137,15 +141,14 @@ public class ImuFragment extends Fragment {
         mRunnable = new Runnable() {
             @Override
             public void run() {
-
                 mHandler.postDelayed(this, 50); // Update IMU data every 50ms
                 if (BasketDrawer.mSensorFusion == null)
                     return;
 
-        intPitch = Float.parseFloat(BasketDrawer.mSensorFusion.pitch) ;
-        intRoll =  Float.parseFloat(BasketDrawer.mSensorFusion.roll);
-        intpitchZero =intPitch - pitchZero;
-        introllZero =intRoll - rollZero;
+                intPitch = Float.parseFloat(BasketDrawer.mSensorFusion.pitch) ;
+                intRoll =  Float.parseFloat(BasketDrawer.mSensorFusion.roll);
+                intpitchZero =intPitch - pitchZero;
+                introllZero =intRoll - rollZero;
 
                 newPitch = Float.toString(Float.parseFloat(d.format(intpitchZero)));
                 newRoll = Float.toString(Float.parseFloat(d.format(introllZero)));
@@ -180,10 +183,10 @@ public class ImuFragment extends Fragment {
                                 mButton.setBackgroundResource(R.drawable.imu_control);
                             }
                         }
-                    } else {
-
-                        mButton.setBackgroundResource(R.drawable.imu_connection);
-                        mLayout.setBackgroundColor(Color.parseColor("#ffebee"));
+                    }
+                    else {
+                        mButton.setBackgroundResource(R.drawable.no_connection);
+                        mLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                     }
                 }
             }

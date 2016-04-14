@@ -25,11 +25,13 @@ import com.google.android.gms.vision.Frame;
  */
 public class FollowFragment extends Fragment {
     private ToggleButton fButton;
+    private FrameLayout fLayout;
+
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
     private int counter = 0;
     private boolean toggleButtonState;
-    private FrameLayout fLayout;
+
     private OnFragmentInteractionListener mListener;
 
     public FollowFragment() {
@@ -63,6 +65,10 @@ public class FollowFragment extends Fragment {
         fButton = (ToggleButton)view.findViewById(R.id.follow_button);
         fLayout = (FrameLayout)view.findViewById(R.id.follow_layout);
 
+        fButton.setBackgroundResource(R.drawable.follow_blue);
+        fLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+
+        toggleButtonState = false;
 
         mHandler = new Handler();
         mHandler.postDelayed(new Runnable() { // Hide the menu icon and tablerow if there is no build in gyroscope in the device
@@ -100,7 +106,7 @@ public class FollowFragment extends Fragment {
                     if (BasketDrawer.bluetoothService == null)
                         return;
                     if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
-                        fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
+                        fLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                         toggleButtonState = fButton.isChecked();
                         if (BasketDrawer.joystickReleased) {
                             if (toggleButtonState) {
@@ -118,7 +124,7 @@ public class FollowFragment extends Fragment {
                     }
                     else {
                         fButton.setBackgroundResource(R.drawable.follow_blue);
-                        fLayout.setBackgroundColor((Color.parseColor("#ffebee")));
+                        fLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                     }
                 }
             }

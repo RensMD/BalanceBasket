@@ -130,7 +130,6 @@ public class BasketDrawer extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -140,7 +139,6 @@ public class BasketDrawer extends AppCompatActivity
             transaction.commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -205,7 +203,6 @@ public class BasketDrawer extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 
     @Override
