@@ -1,12 +1,10 @@
 package com.example.group21.balancebasket;
 
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,12 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +32,6 @@ public class ShoppingListFragment extends Fragment {
     private EditText productPrice;
     private Button addProductButton;
     private Button removeProductButton;
-    private TextView totalPrice;
 
     public ShoppingListFragment() {
         // Required empty public constructor
@@ -48,7 +42,6 @@ public class ShoppingListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         listView = (ListView) view.findViewById(R.id.ListView);
-        //totalPrice = (TextView) view.findViewById(R.id.TotalPriceView);
         productName = (EditText) view.findViewById(R.id.NameEditText);
         productPrice = (EditText) view.findViewById(R.id.PriceEditText);
         addProductButton = (Button) view.findViewById(R.id.AddButton);
@@ -56,7 +49,7 @@ public class ShoppingListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String name = "";
-                Double price = 0.0;
+                Double price = 0.00;
                 // secure code against invalid input
                 try{
                     name = productName.getText().toString();
@@ -75,11 +68,6 @@ public class ShoppingListFragment extends Fragment {
                     // clear input fields
                     productName.setText("");
                     productPrice.setText("");
-    //              DBHelper = new UserDBHelper(getContext());
-    //              db = DBHelper.getWritableDatabase();
-    //
-    //              String totalp = userDbHelper.calculateTotalPrice(db).total.getString;
-    //              totalPrice.setText(totalP); //TODO Get the program to print the total price in the textView TotalPrice
                     Toast.makeText(getActivity(), name + " added to shoppinglist", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -106,9 +94,7 @@ public class ShoppingListFragment extends Fragment {
 
                 productName.setText("");
                 productPrice.setText("");
-             //   userDbHelper.calculateTotalPrice();
             }}
-
         });
         provideData();
         return view;
@@ -152,6 +138,4 @@ public class ShoppingListFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
-
 }

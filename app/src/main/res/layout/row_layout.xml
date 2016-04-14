@@ -4,17 +4,21 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/text_product_name"
-        android:gravity="center"
-        />
+        android:gravity="left"
+        android:layout_weight="1"
+        android:textSize="30dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/text_product_price"
-        android:gravity="center"
-        android:layout_marginStart="40dp"/>
+        android:gravity="right"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:textSize="30dp"/>
 
 </LinearLayout>

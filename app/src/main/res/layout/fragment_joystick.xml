@@ -6,62 +6,59 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer"
-    android:background="@color/colorWhite">
-
+    android:background="@color/white">
 
     <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:background="@drawable/layout_shadow">
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:background="@drawable/layout_shadow">
 
-    <ImageView
-        android:id="@+id/horizontal"
-        android:background="@drawable/forward"
-        android:layout_height="25dp"
-        android:layout_width="25dp"
-        />
+            <ImageView
+                android:id="@+id/horizontal"
+                android:background="@drawable/forward"
+                android:layout_height="25dp"
+                android:layout_width="25dp"/>
 
-    <TextView
-        android:id="@+id/joystickX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/joystickX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/layout_shadow">
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/layout_shadow">
 
-    <ImageView
-        android:id="@+id/left"
-        android:background="@drawable/left"
-        android:layout_height="25dp"
-        android:layout_width="25dp"/>
+            <ImageView
+                android:id="@+id/left"
+                android:background="@drawable/left"
+                android:layout_height="25dp"
+                android:layout_width="25dp"/>
 
-    <TextView
-        android:id="@+id/joystickY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"  />
+            <TextView
+                android:id="@+id/joystickY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-    </TableRow>
+        </TableRow>
 
     </TableLayout>
 
@@ -70,8 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="15dp" />
-
-
+        android:layout_margin="15dp"/>
 
 </FrameLayout>

@@ -43,8 +43,6 @@ public class ConnectscreenFragment extends Fragment {
     private static TextView connectText;
     private static ProgressBar progressBar;
     private static LinearLayout connectionlayout;
-//    private LinearLayout connection_status;
-
     private OnFragmentInteractionListener mListener;
     private BroadcastReceiver receiver;
 
@@ -87,9 +85,8 @@ public class ConnectscreenFragment extends Fragment {
             motionButton.setEnabled(true);
             joystickButton.setEnabled(true);
             followButton.setEnabled(true);
-            connectionText.setText("");
             connectText.setText("");
-            //TODO: change icon to check
+            connectionText.setText("");
             progressBar.setVisibility(ProgressBar.INVISIBLE);
             connectionlayout.setBackgroundResource(R.drawable.connected);
         }
@@ -97,15 +94,8 @@ public class ConnectscreenFragment extends Fragment {
             motionButton.setEnabled(false);
             joystickButton.setEnabled(false);
             followButton.setEnabled(false);
-
-//            motionButton.setBackgroundColor(Color.parseColor("#ebebeb"));
-//            joystickButton.setBackgroundColor(Color.parseColor("#ebebeb"));
-//            followButton.setBackgroundColor(Color.parseColor("#ebebeb"));
-
-            motionButton.setTextColor(Color.parseColor("#ffffff"));
-            joystickButton.setTextColor(Color.parseColor("#ffffff"));
-            followButton.setTextColor(Color.parseColor("#ffffff"));
-            connectionText.setText("Establishing Connection...");
+            connectText.setText("Connecting");
+            connectionText.setText("Establishing Bluetooth Connection...");
             progressBar.setVisibility(ProgressBar.VISIBLE);
             connectionlayout.setBackgroundResource(R.drawable.connect);
         }
@@ -126,9 +116,6 @@ public class ConnectscreenFragment extends Fragment {
         connectText = (TextView) view.findViewById(R.id.Connect_text);
         connectionlayout = (LinearLayout) view.findViewById(R.id.connection_status);
 
-//        chooseText = (TextView) view.findViewById(R.id.choose_Text);
-//        connection = (LinearLayout) view.findViewById(R.id.connection_status);
-
         // initiate button listeners
         final FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         makeMotionButtonListener(transaction);
@@ -142,7 +129,6 @@ public class ConnectscreenFragment extends Fragment {
             isConnected = true;
         }
         // set initial button state
-        shoppinglistButton.setEnabled(true);
         changeButtonState(isConnected);
         return view;
     }
@@ -191,8 +177,8 @@ public class ConnectscreenFragment extends Fragment {
             public void onClick(View v) {
                 ImuFragment imuFragment = new ImuFragment();
                 imuFragment.setArguments(getActivity().getIntent().getExtras());
-            transaction.replace(R.id.basketDrawerFrame, imuFragment);
-            transaction.commit();
+                transaction.replace(R.id.basketDrawerFrame, imuFragment);
+                transaction.commit();
             }
         });
     }

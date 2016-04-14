@@ -1,6 +1,5 @@
 package com.example.group21.balancebasket;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -37,16 +36,19 @@ public class UserDBHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_NAME);
 
         // insert products into the database
-        this.addProduct(db, "apple", 0.25);
-        this.addProduct(db, "banana", 0.15);
-        this.addProduct(db, "toothpaste", 1.25);
-        this.addProduct(db, "cookies", 3.75);
-        this.addProduct(db, "bullshit", 2.50);
+        this.addProduct(db, "Apple", 0.25);
+        this.addProduct(db, "Banana", 0.15);
+        this.addProduct(db, "Toothpaste", 1.25);
+        this.addProduct(db, "Cookies", 3.75);
+        this.addProduct(db, "Chocolate", 2.25);
+        this.addProduct(db, "Rice", 0.65);
+        this.addProduct(db, "Cereals", 1.85);
+        this.addProduct(db, "Bread", 1.55);
+        this.addProduct(db, "Tomatoes", 0.55);
     }
 
     // insert product into the database
     public void addProduct (SQLiteDatabase db, String name, double price){
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(PRODUCT_NAME, name);
         contentValues.put(PRODUCT_PRICE, price);
@@ -98,7 +100,5 @@ public class UserDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-
     }
-
 }

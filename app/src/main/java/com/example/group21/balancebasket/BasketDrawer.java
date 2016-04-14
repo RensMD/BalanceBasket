@@ -1,9 +1,5 @@
 package com.example.group21.balancebasket;
 
-// TODO: first page should be Connectivity screen. Not showing the drawer button. When a mode is chosen by the user, go to selected fragment
-// TODO: if bluetooth connection is not established or lost, disable the drawer menu items that require bluetooth connection.
-// TODO: Add Shopping list
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
@@ -15,19 +11,14 @@ import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-
 
 public class BasketDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ImuFragment.OnFragmentInteractionListener, JoystickFragment.OnFragmentInteractionListener, FollowFragment.OnFragmentInteractionListener, ConnectscreenFragment.OnFragmentInteractionListener, ShoppingListFragment.OnFragmentInteractionListener {
@@ -96,15 +87,6 @@ public class BasketDrawer extends AppCompatActivity
             shoppinglistFragment = new ShoppingListFragment();
             shoppinglistFragment.setArguments(getIntent().getExtras());
         }
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         BasketDrawer.buttonState = false;
 
@@ -264,8 +246,6 @@ public class BasketDrawer extends AppCompatActivity
         public void onServiceDisconnected(ComponentName name)
         {
             bluetoothService = null;
-
         }
     };
-
 }

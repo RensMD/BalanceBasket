@@ -55,7 +55,7 @@ public class JoystickView extends View {
         }
 
         p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(50);
+        p.setStrokeWidth(30);
         p.setColor(buttonTeal);
         canvas.drawCircle(centerX, centerY, joystickRadius, p);
         canvas.drawCircle(centerX, centerY, joystickRadius / 2, p);

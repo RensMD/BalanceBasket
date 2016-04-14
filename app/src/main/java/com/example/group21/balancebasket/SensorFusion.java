@@ -405,7 +405,6 @@ public class SensorFusion implements SensorEventListener {
 
         pitch = d.format(pitchOut * 180 / Math.PI);
         roll = d.format(rollOut * 180 / Math.PI);
-       // coefficient = d.format(tempFilter_coefficient);
     }
 
     private Runnable updateOreintationDisplayTask = new Runnable() {

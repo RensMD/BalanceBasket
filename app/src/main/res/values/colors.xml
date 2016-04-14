@@ -16,5 +16,5 @@
     <color name="background_material_light">#fafafa</color>
     <color name="foreground_material_light">#000000</color>
     <color name="black">#000000</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="white">#ffffff</color>
 </resources>

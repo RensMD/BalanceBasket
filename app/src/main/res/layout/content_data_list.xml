@@ -26,26 +26,26 @@
         android:padding="14dp"
         android:background="@color/colorPrimary">
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/NameEditText"
-        android:hint="Name:"
-        android:layout_alignParentStart="true"
-        android:layout_weight="1"
-        android:layout_margin="16dp"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/NameEditText"
+            android:hint="Name:"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:layout_margin="16dp"/>
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/PriceEditText"
-        android:hint="Price:"
-        android:layout_alignTop="@+id/NameEditText"
-        android:layout_toEndOf="@+id/NameEditText"
-        android:layout_weight="1"
-        android:layout_margin="16dp"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/PriceEditText"
+            android:hint="Price:"
+            android:layout_alignTop="@+id/NameEditText"
+            android:layout_toEndOf="@+id/NameEditText"
+            android:layout_weight="1"
+            android:layout_margin="16dp"/>
 
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:id="@+id/AddButton"
             android:onClick="OnAddClicked"
             android:background="@drawable/button_green"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/white"
             android:drawableLeft="@drawable/ic_add_circle_outline_24dp"
             android:padding="20dp"
             android:layout_margin="16dp"
@@ -82,7 +82,7 @@
             android:text="Remove"
             android:id="@+id/RemoveButton"
             android:background="@drawable/button_green"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/white"
             android:drawableRight="@drawable/ic_remove_circle_outline_24dp"
             android:padding="20dp"
             android:layout_margin="16dp"

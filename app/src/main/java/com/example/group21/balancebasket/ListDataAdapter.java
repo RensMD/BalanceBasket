@@ -21,16 +21,12 @@ public class ListDataAdapter extends ArrayAdapter{
 
     static class LayoutHandler{
         TextView NAME, PRICE;
-
-
     }
 
     @Override
     public void add(Object object){
         super.add(object);
         list.add(object);
-
-
     }
 
     @Override
@@ -49,7 +45,6 @@ public class ListDataAdapter extends ArrayAdapter{
         View row = convertView;
         LayoutHandler layoutHandler;
         if(row == null){
-
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.row_layout, parent, false);
             layoutHandler = new LayoutHandler();
@@ -58,16 +53,12 @@ public class ListDataAdapter extends ArrayAdapter{
             row.setTag(layoutHandler);
         }
         else {
-
             layoutHandler = (LayoutHandler) row.getTag();
-
-
         }
 
         DataProvider dataProvider = (DataProvider) this.getItem(position);
         layoutHandler.NAME.setText(dataProvider.getName().toString());
         layoutHandler.PRICE.setText(dataProvider.getPrice().toString());
-
         return row;
     }
 }

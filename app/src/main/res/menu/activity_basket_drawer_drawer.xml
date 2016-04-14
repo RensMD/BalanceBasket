@@ -6,13 +6,13 @@
             <menu>
                 <item android:id="@+id/nav_motion"
                     android:icon="@drawable/ic_screen_rotation_black_24dp"
-                    android:title="Motion" />
+                    android:title="Motion"/>
                 <item android:id="@+id/nav_joystick"
                     android:icon="@drawable/ic_touch_app_black_24dp"
-                    android:title="Joystick" />
+                    android:title="Joystick"/>
                 <item android:id="@+id/nav_follow"
                     android:icon="@drawable/ic_track_changes_24dp"
-                    android:title="Follow" />
+                    android:title="Follow"/>
             </menu>
         </item>
     </group>
@@ -22,12 +22,13 @@
                 <item
                     android:id="@+id/nav_shopping"
                     android:icon="@drawable/ic_shopping_cart_black_24dp"
-                    android:title="List" />
+                    android:title="List"/>
             </menu>
         </item>
 
     <item
          android:id="@+id/nav_settings"
          android:icon="@drawable/ic_settings_24dp"
-         android:title="Settings" />
+         android:title="Settings"/>
+
 </menu>

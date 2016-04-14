@@ -7,9 +7,6 @@
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer">
 
-
-
-    <include layout="@layout/content_data_list"
-        android:padding="5dp"/>
+    <include layout="@layout/content_data_list"/>
 
 </FrameLayout>

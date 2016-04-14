@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.group21.balancebasket.FollowFragment"
     android:id="@+id/follow_layout"
-    android:background="@color/colorWhite"
->
+    android:background="@color/white">
 
     <ToggleButton
         android:layout_width="match_parent"
@@ -14,7 +13,6 @@
         android:textOff=""
         android:id="@+id/follow_button"
         android:layout_gravity="bottom"
-        android:background="@drawable/follow_start"
-        />
+        android:background="@drawable/follow_start"/>
 
 </FrameLayout>

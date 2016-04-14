@@ -1,11 +1,7 @@
 package com.example.group21.balancebasket;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * Created by Rens on 26-3-2016.
- */
 public class Product implements Serializable {
     String name;
     String price;

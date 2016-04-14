@@ -1,17 +1,17 @@
-<!--TODO: Clean up Strings-->
-
 <resources>
+
     <string name="app_name">BalanceBasket</string>
 
     <!-- Welcome -->
     <string name="welcome_text">Welcome to the Balance Basket App</string>
     <string name="continue_text">To start using the app, first please agree to the:</string>
+    <string name="terms_text">A Terms of Service Agreement is a set of regulations that users must agree to follow in order to use a service. Terms of Use is often named Terms of Service and sometimes Terms and Conditions, as well as Disclaimer, mostly when addressing website usage.</string>
     <string name="agree_button">Agree</string>
 
     <!-- Connect -->
     <string name="title_activity_connect__screen">Connect Screen</string>
     <string name="Connect_text">Connecting</string>
-    <string name="Connection_Text">Establishing Connection...</string>
+    <string name="Connection_Text">Establishing Bluetooth Connection…</string>
 
     <!-- Basket drawer -->
     <string name="title_activity_basket_drawer">Balance Basket</string>
@@ -23,13 +23,11 @@
     <string name="joystick_fragment">Joystick Fragment</string>
     <string name="defaultJoystickValue1">0</string>
     <string name="defaultJoystickValue2">0</string>
-    <string name="choose_Text"></string>
 
     <!-- IMU Fragment -->
     <string name="imu_fragment">IMU Fragment</string>
     <string name="pitch">Pitch: </string>
     <string name="roll">Roll: </string>
-    <string name="coefficient">Filter Coefficient: </string>
     <string name="sendingData">Now Sending Data</string>
     <string name="notSendingData">Hold to Send</string>
     <string name="connectFirst">Connect to a Device First</string>
@@ -38,6 +36,11 @@
     <string name="follow_fragment">Follow Fragment</string>
     <string name="followModeOn">Following</string>
     <string name="followModeOff">Toggle to follow</string>
+
+    <!-- Shopping List Fragment -->
+    <string name="shopping_list_fragment_title">Shopping List</string>
+    <string name="action_follow_toggle">follow_toggle</string>
+    <string name="input">input</string>
 
     <!-- Strings related to Settings -->
     <string name="title_activity_settings_">Settings</string>
@@ -92,14 +95,6 @@
     <string name="activate_Button">Activate</string>
     <string name="SettingsText">Settings</string>
 
-    <string name="shopping_list_fragment_title">Shopping List</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="action_follow_toggle">follow_toggle</string>
-    <string name="input">input</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="terms_text">A Terms of Service Agreement is a set of regulations that users must agree to follow in order to use a service. Terms of Use is often named Terms of Service and sometimes Terms and Conditions, as well as Disclaimer, mostly when addressing website usage.</string>
 </resources>
 
 

@@ -166,22 +166,18 @@ public class ImuFragment extends Fragment {
                     if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
                         buttonState = mButton.isPressed();
                         BasketDrawer.buttonState = buttonState;
+                        mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
 
                         if (BasketDrawer.joystickReleased) {
                             if (buttonState) {
 //                                lockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendIMUValues + newPitch + ',' + newRoll + ";");
-
                                 mButton.setBackgroundResource(R.drawable.imu_sending);
-                                mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
-
 
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
-
                                 mButton.setBackgroundResource(R.drawable.imu_control);
-                                mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                             }
                         }
                     } else {

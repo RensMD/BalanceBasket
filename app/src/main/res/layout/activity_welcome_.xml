@@ -65,7 +65,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="Start_Connect_Activity"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/white"
         android:background="@drawable/button_green"
         android:layout_margin="16dp"/>
 

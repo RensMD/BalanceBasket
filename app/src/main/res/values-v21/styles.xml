@@ -25,6 +25,8 @@
         <item name="android:colorForeground">@color/foreground_material_light</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
         <item name="android:button">@color/colorPrimary</item>
-
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
     </style>
+
 </resources>

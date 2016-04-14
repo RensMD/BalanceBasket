@@ -6,14 +6,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer"
-    android:background="@color/colorWhite"
+    android:background="@color/white"
     android:id="@+id/imu_layout">
 
     <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -26,9 +25,7 @@
                 android:id="@+id/horizontal"
                 android:background="@drawable/forward"
                 android:layout_height="25dp"
-                android:layout_width="25dp"
-                />
-
+                android:layout_width="25dp"/>
 
             <TextView
                 android:id="@+id/textView1"
@@ -36,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </TableRow>
 
         <TableRow
@@ -54,14 +52,15 @@
                 android:layout_height="25dp"
                 android:layout_width="25dp"/>
 
-
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </TableRow>
+
     </TableLayout>
 
     <Button
@@ -69,13 +68,7 @@
         android:layout_height="400dp"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/activate_button"
-        android:background="@drawable/imu_sending"
-/>
-
-
-
-
-
+        android:background="@drawable/imu_sending"/>
 
 </FrameLayout>
 

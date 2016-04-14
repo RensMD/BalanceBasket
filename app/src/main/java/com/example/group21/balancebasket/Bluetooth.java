@@ -1,5 +1,5 @@
 package com.example.group21.balancebasket;
-//Todo: test connection boolean
+
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -33,8 +33,6 @@ public class Bluetooth extends IOIOService {
     private LocalBroadcastManager broadcaster;
 
     // Constants that indicate the current connection state
-    public static final int STATE_NONE = 0; // we're doing nothing
-    public static final int STATE_CONNECTING = 1; // now initiating an outgoing connection
     public static final int STATE_BT_CONNECTED = 2; // now connected to a remote device
     public static final int STATE_BT_DISCONNECTED = 3; //
     public static boolean connection = false;
@@ -56,17 +54,6 @@ public class Bluetooth extends IOIOService {
                 && intent.getAction().equals("stop")) {
             // User clicked the notification. Need to stop the service.
             stopSelf();
-        } else {
-            // Service starting. Create a notification.
-//            Notification notification = new Notification(
-//                    R.drawable.icon, "IOIO service running",
-//                    System.currentTimeMillis());
-//            notification
-//                    .setLatestEventInfo(this, "IOIO Service", "Click to stop",
-//                            PendingIntent.getService(this, 0, new Intent(
-//                                    "stop", null, this, this.getClass()), 0));
-//            notification.flags |= Notification.FLAG_ONGOING_EVENT;
-//            nm.notify(0, notification);
         }
     }
 

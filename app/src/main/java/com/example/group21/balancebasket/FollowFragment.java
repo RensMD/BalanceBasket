@@ -100,6 +100,7 @@ public class FollowFragment extends Fragment {
                     if (BasketDrawer.bluetoothService == null)
                         return;
                     if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
+                        fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
                         toggleButtonState = fButton.isChecked();
                         if (BasketDrawer.joystickReleased) {
                             if (toggleButtonState) {
@@ -107,20 +108,15 @@ public class FollowFragment extends Fragment {
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendFollow + ";");
                                 BasketDrawer.follow = true;
                                 fButton.setBackgroundResource(R.drawable.follow_following);
-                                fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
-
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
                                 BasketDrawer.follow = false;
-
                                 fButton.setBackgroundResource(R.drawable.follow_start);
-                                fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
-
-
                             }
                         }
-                    } else {
+                    }
+                    else {
                         fButton.setBackgroundResource(R.drawable.follow_blue);
                         fLayout.setBackgroundColor((Color.parseColor("#ffebee")));
                     }
