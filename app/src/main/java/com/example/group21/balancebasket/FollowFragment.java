@@ -65,8 +65,8 @@ public class FollowFragment extends Fragment {
         fButton = (ToggleButton)view.findViewById(R.id.follow_button);
         fLayout = (FrameLayout)view.findViewById(R.id.follow_layout);
 
-        fButton.setBackgroundResource(R.drawable.follow_blue);
-        fLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+//        fButton.setBackgroundResource(R.drawable.follow_connection);
+//        fLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
 
         toggleButtonState = false;
 
@@ -123,7 +123,7 @@ public class FollowFragment extends Fragment {
                         }
                     }
                     else {
-                        fButton.setBackgroundResource(R.drawable.follow_blue);
+                        fButton.setBackgroundResource(R.drawable.follow_connection);
                         fLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                     }
                 }

@@ -9,12 +9,12 @@
     android:id="@+id/follow_layout">
 
     <ToggleButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:layout_height="600dp"
         android:textOn=""
         android:textOff=""
         android:id="@+id/follow_button"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|center_horizontal"
         android:background="@drawable/follow_start"/>
 
 </FrameLayout>
