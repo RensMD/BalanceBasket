@@ -6,7 +6,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer"
-    android:id="@+id/follow_layout">
+    android:id="@+id/follow_layout"
+    android:background="@color/white">
 
     <ToggleButton
         android:layout_width="400dp"
@@ -15,6 +16,6 @@
         android:textOff=""
         android:id="@+id/follow_button"
         android:layout_gravity="bottom|center_horizontal"
-        android:background="@drawable/follow_start"/>
+        android:background="@color/white"/>
 
 </FrameLayout>
