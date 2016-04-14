@@ -103,21 +103,21 @@ public class FollowFragment extends Fragment {
                 counter++;
                 if (counter > 2) { // Only send data every 150ms time
                     counter = 0;
-                    if (false)
+                    if (BasketDrawer.bluetoothService == null)
                         return;
-                    if (true){
+                    if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
                         fLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                         toggleButtonState = fButton.isChecked();
                         if (BasketDrawer.joystickReleased) {
                             if (toggleButtonState) {
 //                                lockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendFollow + ";");
-                                //BasketDrawer.follow = true;
+//                                BasketDrawer.follow = true;
                                 fButton.setBackgroundResource(R.drawable.follow_following);
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
-                                //BasketDrawer.follow = false;
+//                                BasketDrawer.follow = false;
                                 fButton.setBackgroundResource(R.drawable.follow_start);
                             }
                         }
