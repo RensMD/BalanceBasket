@@ -6,7 +6,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.group21.balancebasket.BasketDrawer"
     tools:showIn="@layout/app_bar_basket_drawer"
-    android:background="#E0F2F1"
+    android:background="@color/colorWhite"
     android:id="@+id/imu_layout">
 
     <TableLayout

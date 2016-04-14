@@ -107,15 +107,15 @@ public class FollowFragment extends Fragment {
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendFollow + ";");
                                 BasketDrawer.follow = true;
                                 fButton.setBackgroundResource(R.drawable.follow_following);
-                                fLayout.setBackgroundColor((Color.parseColor("#E0F2F1")));
+                                fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
 
                             } else {
 //                                unlockRotation();
                                 BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
                                 BasketDrawer.follow = false;
 
-                                fButton.setBackgroundResource(R.drawable.follow_following);
-                                fLayout.setBackgroundColor((Color.parseColor("#E0F2F1")));
+                                fButton.setBackgroundResource(R.drawable.follow_start);
+                                fLayout.setBackgroundColor((Color.parseColor("@color/colorWhite")));
 
 
                             }
