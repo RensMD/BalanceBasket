@@ -36,15 +36,17 @@ public class UserDBHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_NAME);
 
         // insert products into the database
-        this.addProduct(db, "Apple", 0.25);
+        this.addProduct(db, "Apple", 0.22);
         this.addProduct(db, "Banana", 0.15);
         this.addProduct(db, "Toothpaste", 1.25);
-        this.addProduct(db, "Cookies", 3.75);
+        this.addProduct(db, "Cookies", 3.73);
         this.addProduct(db, "Chocolate", 2.25);
         this.addProduct(db, "Rice", 0.65);
-        this.addProduct(db, "Cereals", 1.85);
+        this.addProduct(db, "Cereals", 1.86);
         this.addProduct(db, "Bread", 1.55);
-        this.addProduct(db, "Tomatoes", 0.55);
+        this.addProduct(db, "Tomatoes", 0.59);
+        this.addProduct(db, "Basil", 0.35);
+        this.addProduct(db, "Chicken", 0.49);
     }
 
     // insert product into the database
