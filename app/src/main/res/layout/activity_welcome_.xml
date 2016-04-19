@@ -16,7 +16,7 @@
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/welcome_text" />
+        android:layout_above="@+id/welcome_text"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:layout_above="@+id/please_text"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_alignStart="@+id/please_text"
-        android:layout_alignEnd="@+id/please_text" />
+        android:layout_alignEnd="@+id/please_text"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:layout_above="@+id/terms_text"
         android:layout_alignStart="@+id/agree_button"
         android:layout_marginTop="3dp"
-        android:layout_alignEnd="@+id/agree_button" />
+        android:layout_alignEnd="@+id/agree_button"/>
 
     <TextView
         android:layout_width="match_parent"

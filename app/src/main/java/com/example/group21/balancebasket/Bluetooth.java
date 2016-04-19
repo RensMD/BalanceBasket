@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import ioio.lib.api.DigitalOutput;
 import ioio.lib.api.IOIO;
 import ioio.lib.api.Uart;
 import ioio.lib.api.exception.ConnectionLostException;
@@ -21,20 +20,20 @@ import ioio.lib.util.android.IOIOService;
 
 public class Bluetooth extends IOIOService {
     // Debugging
-    private static final String TAG = "Bluetooth";
-    private static final boolean D = BasketDrawer.D;
+//    private static final String TAG = "Bluetooth";
+//    private static final boolean D = BasketDrawer.D;
 
     private int mState;
     private byte[] coordinates = new byte[1];
     private static byte[] information = new byte[1];
     public static String input;
     public static String[] dataInput = new String[30];
-    private final IBinder blueBinder =  new BlueBinder();
+//    private final IBinder blueBinder =  new BlueBinder();
     private LocalBroadcastManager broadcaster;
 
     // Constants that indicate the current connection state
-    public static final int STATE_BT_CONNECTED = 2; // now connected to a remote device
-    public static final int STATE_BT_DISCONNECTED = 3; //
+    public static final int STATE_BT_CONNECTED = 2;
+    public static final int STATE_BT_DISCONNECTED = 3;
     public static boolean connection = false;
 
     public static final String CONNECTION_STATE = "com.example.group21.balancebasket.Bluetooth.CONNECTION_STATE";
@@ -94,8 +93,8 @@ public class Bluetooth extends IOIOService {
      * be called repetitively until the IOIO gets disconnected.
      */
     class Looper extends BaseIOIOLooper {
-        /** The on-board LED. */
-        private DigitalOutput led_;
+//        /** The on-board LED. */
+//        private DigitalOutput led_;
         Uart uart;
         OutputStream out;
         InputStream in;
@@ -114,7 +113,7 @@ public class Bluetooth extends IOIOService {
             mState = STATE_BT_CONNECTED;
             sendResult(STATE_CONNECTED);
             showVersions(ioio_, "IOIO connected!");
-            led_ = ioio_.openDigitalOutput(0, true);
+//            led_ = ioio_.openDigitalOutput(0, true);
             connection = true;
         }
 
@@ -166,7 +165,6 @@ public class Bluetooth extends IOIOService {
                 ioio.getImplVersion(IOIO.VersionType.APP_FIRMWARE_VER),
                 ioio.getImplVersion(IOIO.VersionType.BOOTLOADER_VER),
                 ioio.getImplVersion(IOIO.VersionType.HARDWARE_VER)));
-
     }
 
     private void toast(final String message) {
@@ -201,6 +199,9 @@ public class Bluetooth extends IOIOService {
         write(string.getBytes());
     }
 
+    /**
+     * Read
+     */
     public static void read(){
        input= String.valueOf(0);
         if(information[0]=='S') {

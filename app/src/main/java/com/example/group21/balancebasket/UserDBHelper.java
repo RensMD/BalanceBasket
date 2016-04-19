@@ -10,15 +10,16 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.group21.balancebasket.UserContract.NewProduct.*;
+import static com.example.group21.balancebasket.UserContract.NewProduct.COLUMN_ID;
+import static com.example.group21.balancebasket.UserContract.NewProduct.PRODUCT_NAME;
+import static com.example.group21.balancebasket.UserContract.NewProduct.PRODUCT_PRICE;
+import static com.example.group21.balancebasket.UserContract.NewProduct.TABLE_NAME;
 
 public class UserDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ProductsDB.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String CREATE_QUERY = "CREATE TABLE " +  TABLE_NAME + "(" + COLUMN_ID +
-            " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_NAME + " TEXT, " +
-            PRODUCT_PRICE + " TEXT " + ");";
+    private static final String CREATE_QUERY = "CREATE TABLE " +  TABLE_NAME + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_NAME + " TEXT, " + PRODUCT_PRICE + " TEXT " + ");";
 
     public UserDBHelper (Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,23 +67,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return result > 0;
         }
 
-    public String calculateTotalPrice(SQLiteDatabase db){
-        Cursor c = db.rawQuery("SELECT SUM(PRODUCT_PRICE) AS TOTAL FROM " + TABLE_NAME + ";", null);
-        String total = "";
-        int iPrice = c.getColumnIndex(PRODUCT_PRICE);
-
-        for(c.moveToFirst(); !c.isAfterLast();c.moveToNext()){
-            total = total + c.getString(iPrice);
-        }
-
-        return total;
-    }
-
-
     // get all products from the database
     public static List<Product> getProducts(SQLiteDatabase db){
-        Cursor cursor = db.query(TABLE_NAME, new String[] { COLUMN_ID, PRODUCT_NAME, PRODUCT_PRICE },
-                null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME, new String[] { COLUMN_ID, PRODUCT_NAME, PRODUCT_PRICE }, null, null, null, null, null);
         List<Product> products = new ArrayList<Product>();
         while (cursor.moveToNext()) {
             // get column indices + values of those columns

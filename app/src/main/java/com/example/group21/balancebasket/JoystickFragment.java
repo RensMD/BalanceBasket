@@ -1,12 +1,12 @@
 package com.example.group21.balancebasket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,21 +17,13 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link JoystickFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link JoystickFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class JoystickFragment extends Fragment implements JoystickView.OnJoystickChangeListener {
+
     DecimalFormat d = (DecimalFormat) NumberFormat.getNumberInstance(Locale.ENGLISH);
     JoystickView mJoystick;
     TextView mText1;
     TextView mText2;
     FrameLayout jLayout;
-
 
     private Handler mHandler = new Handler();
     private Runnable mRunnable;
@@ -46,19 +38,6 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment JoystickFragment.
-     */
-    public static JoystickFragment newInstance() {
-        JoystickFragment fragment = new JoystickFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +45,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
 
     // process the joystick data
     private void newData(double xValue, double yValue, boolean joystickReleased) {
-        if (xValue == 0 && yValue == 0)
-            joystickReleased = true;
+        if (xValue == 0 && yValue == 0) joystickReleased = true;
 
         BasketDrawer.joystickReleased = joystickReleased;
         this.joystickReleased = joystickReleased;
@@ -78,8 +56,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_joystick, container, false);
 
@@ -98,14 +75,6 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         BasketDrawer.joystickReleased = true;
 
         return v;
-
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -122,19 +91,22 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
             @Override
             public void run() {
                 mHandler.postDelayed(this, 150); // Send data every 150ms
-                if (BasketDrawer.bluetoothService == null)
-                    return;
-                if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED) {
-                   jLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
-                   if (joystickReleased || (xValue == 0 && yValue == 0))
-                       BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
-                   else {
-                       String message = BasketDrawer.sendJoystickValues + d.format(xValue) + ',' + d.format(yValue) + ";";
-                       BasketDrawer.bluetoothService.write(message);
+                if(!BasketDrawer.fakeConnection) {
+                    if (BasketDrawer.bluetoothService == null)
+                        return;
+                    if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED) {
+                        jLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
+                        if (joystickReleased || (xValue == 0 && yValue == 0))
+                            BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
+                        else {
+                            String message = BasketDrawer.sendJoystickValues + d.format(xValue) + ',' + d.format(yValue) + ";";
+                            BasketDrawer.bluetoothService.write(message);
                         }
+                    } else {
+                        jLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                     }
-                else{
-                    jLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+                } else {
+                    jLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
                 }
             }
         };
@@ -153,8 +125,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -179,21 +150,6 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         newData(xValue, yValue, true);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
     @Override
     public void onPause() {
         super.onPause();
@@ -210,4 +166,7 @@ public class JoystickFragment extends Fragment implements JoystickView.OnJoystic
         BasketDrawer.joystickReleased = true;
     }
 
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
+    }
 }

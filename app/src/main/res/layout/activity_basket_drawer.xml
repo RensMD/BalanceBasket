@@ -11,7 +11,7 @@
     <include
         layout="@layout/app_bar_basket_drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -20,6 +20,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_basket_drawer"
-        app:menu="@menu/activity_basket_drawer_drawer" />
+        app:menu="@menu/activity_basket_drawer_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,12 +1,12 @@
 package com.example.group21.balancebasket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,12 +34,10 @@ public class ImuFragment extends Fragment {
     private int counter = 0;
     boolean buttonState;
 
-
     public float pitchZero = 0;
     public float rollZero = 0;
     public String newPitch;
     public String newRoll;
-
 
     public  float  intpitchZero;
     public  float  introllZero;
@@ -48,49 +46,26 @@ public class ImuFragment extends Fragment {
 
     DecimalFormat d = (DecimalFormat) NumberFormat.getNumberInstance(Locale.ENGLISH);
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     public ImuFragment() {
         // Required empty public constructor
     }
 
-    public static ImuFragment newInstance(String param1, String param2) {
-        ImuFragment fragment = new ImuFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        context = getContext().getApplicationContext();
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_imu, container, false);
 
+//        inputview = (TextView) view.findViewById(R.id.textView3);
         mPitchView = (TextView) view.findViewById(R.id.textView1);
         mRollView = (TextView) view.findViewById(R.id.textView2);
-//        inputview = (TextView) view.findViewById(R.id.textView3);
+
         mButton = (Button) view.findViewById(R.id.activate_button);
         mLayout = (FrameLayout) view.findViewById(R.id.imu_layout);
 
@@ -122,13 +97,6 @@ public class ImuFragment extends Fragment {
             }
         });
         return view;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -164,29 +132,40 @@ public class ImuFragment extends Fragment {
                 if (counter > 2) { // Only send data every 150ms time
                     counter = 0;
 
-                    if (BasketDrawer.bluetoothService == null)
-                        return;
-                    if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED){
+                    if(!BasketDrawer.fakeConnection) {
+                        if (BasketDrawer.bluetoothService == null)
+                            return;
+                        if (BasketDrawer.bluetoothService.getState() == Bluetooth.STATE_BT_CONNECTED) {
+                            buttonState = mButton.isPressed();
+                            BasketDrawer.buttonState = buttonState;
+                            mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
+
+                            if (BasketDrawer.joystickReleased) {
+                                if (buttonState) {
+                                    BasketDrawer.bluetoothService.write(BasketDrawer.sendIMUValues + newPitch + ',' + newRoll + ";");
+                                    mButton.setBackgroundResource(R.drawable.imu_sending);
+
+                                } else {
+                                    BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
+                                    mButton.setBackgroundResource(R.drawable.imu_control);
+                                }
+                            }
+                        } else {
+                            mButton.setBackgroundResource(R.drawable.no_connection);
+                            mLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
+                        }
+                    } else {
                         buttonState = mButton.isPressed();
                         BasketDrawer.buttonState = buttonState;
                         mLayout.setBackgroundColor(Color.parseColor("#E0F2F1"));
-
                         if (BasketDrawer.joystickReleased) {
                             if (buttonState) {
-//                                lockRotation();
-                                BasketDrawer.bluetoothService.write(BasketDrawer.sendIMUValues + newPitch + ',' + newRoll + ";");
                                 mButton.setBackgroundResource(R.drawable.imu_sending);
 
                             } else {
-//                                unlockRotation();
-                                BasketDrawer.bluetoothService.write(BasketDrawer.sendStop);
                                 mButton.setBackgroundResource(R.drawable.imu_control);
                             }
                         }
-                    }
-                    else {
-                        mButton.setBackgroundResource(R.drawable.no_connection);
-                        mLayout.setBackgroundColor(Color.parseColor("#FFEBEE"));
                     }
                 }
             }
@@ -200,8 +179,7 @@ public class ImuFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -218,17 +196,6 @@ public class ImuFragment extends Fragment {
         getActivity().unbindService(BasketDrawer.blueConnection);
     }
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

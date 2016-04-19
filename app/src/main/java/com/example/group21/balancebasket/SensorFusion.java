@@ -32,7 +32,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Surface;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -70,7 +69,6 @@ public class SensorFusion implements SensorEventListener {
     //public String azimut;
     public String pitch;
     public String roll;
-    public String coefficient;
 
     public static final float EPSILON = 0.000000001f;
     private static final float NS2S = 1.0f / 1000000000.0f;
@@ -79,7 +77,6 @@ public class SensorFusion implements SensorEventListener {
 
     public static final int TIME_CONSTANT = 30;
     public float filter_coefficient = 0.90f;
-    public float tempFilter_coefficient = filter_coefficient;
 
     public Handler mHandler = new Handler();
 
@@ -319,15 +316,6 @@ public class SensorFusion implements SensorEventListener {
         public void run() {
             float oneMinusCoeff = 1.0f - filter_coefficient;
 
-			/*
-             * Fix for 179 <--> -179 transition problem: Check whether one of
-			 * the two orientation angles (gyro or accMag) is negative while the
-			 * other one is positive. If so, add 360 (2 * math.PI) to the
-			 * negative value, perform the sensor fusion, and remove the 360
-			 * from the result if it is greater than 180. This stabilizes the
-			 * output in positive-to-negative-transition cases.
-			 */
-
             // Azimuth
             if (gyroOrientation[0] < -0.5 * Math.PI && accMagOrientation[0] > 0.0) {
                 fusedOrientation[0] = (float) (filter_coefficient * (gyroOrientation[0] + 2.0 * Math.PI) + oneMinusCoeff * accMagOrientation[0]);
@@ -375,32 +363,10 @@ public class SensorFusion implements SensorEventListener {
                 pitchOut = accMagOrientation[1];
                 rollOut = accMagOrientation[2];
                 break;
-		/*case 1:
-			mAzimuthView.setText(d.format(gyroOrientation[0] * 180 / Math.PI));
-			mPitchView.setText(d.format(gyroOrientation[1] * 180 / Math.PI));
-			mRollView.setText(d.format(gyroOrientation[2] * 180 / Math.PI));
-			break;*/
             case 2:
                 pitchOut = fusedOrientation[1];
                 rollOut = fusedOrientation[2];
                 break;
-        }
-
-        if (context.getResources().getBoolean(R.bool.isTablet)) {
-//            int rotation = Accelerometer.getRotation();
-//            if (rotation == Surface.ROTATION_90) { // Landscape
-//                float pitchTemp = pitchOut;
-//                pitchOut = rollOut;
-//                rollOut = -pitchTemp;
-//            } else if (rotation == Surface.ROTATION_180) { // Reverse Portrait
-//                pitchOut = -pitchOut;
-//                rollOut = -rollOut;
-//            } else if (rotation == Surface.ROTATION_270) { // Reverse Landscape
-//                float pitchTemp = pitchOut;
-//                pitchOut = -rollOut;
-//                rollOut = pitchTemp;
-//            }
-            //else // We don't do anything in portrait mode
         }
 
         pitch = d.format(pitchOut * 180 / Math.PI);

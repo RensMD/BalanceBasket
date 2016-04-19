@@ -121,10 +121,10 @@ public class JoystickView extends View {
     }
 
     public interface OnJoystickChangeListener {
-        public void setOnTouchListener(double xValue, double yValue);
+        void setOnTouchListener(double xValue, double yValue);
 
-        public void setOnMovedListener(double xValue, double yValue);
+        void setOnMovedListener(double xValue, double yValue);
 
-        public void setOnReleaseListener(double xValue, double yValue);
+        void setOnReleaseListener(double xValue, double yValue);
     }
 }

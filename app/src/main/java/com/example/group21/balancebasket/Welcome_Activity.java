@@ -2,8 +2,8 @@ package com.example.group21.balancebasket;
 
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class Welcome_Activity extends AppCompatActivity {
@@ -13,6 +13,7 @@ public class Welcome_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_);
     }
+
     public void Start_Connect_Activity(View view) {
         Intent intent = new Intent(this, BasketDrawer.class);
         startActivity(intent);

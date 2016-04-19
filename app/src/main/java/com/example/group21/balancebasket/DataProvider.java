@@ -66,7 +66,4 @@ public class DataProvider extends ContentProvider {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

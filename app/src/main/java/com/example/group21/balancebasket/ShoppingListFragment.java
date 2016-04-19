@@ -1,6 +1,5 @@
 package com.example.group21.balancebasket;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,15 +16,11 @@ import android.widget.Toast;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ShoppingListFragment extends Fragment {
 
     private ListView listView;
     private SQLiteDatabase sqLiteDatabase;
     private UserDBHelper userDbHelper;
-    private Cursor cursor;
     private ListDataAdapter listDataAdapter;
     private DataProvider dataProvider;
     private EditText productName;
@@ -38,8 +33,7 @@ public class ShoppingListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
         listView = (ListView) view.findViewById(R.id.ListView);
         productName = (EditText) view.findViewById(R.id.NameEditText);
@@ -110,7 +104,7 @@ public class ShoppingListFragment extends Fragment {
             sqLiteDatabase = userDbHelper.getWritableDatabase();
         }
         // get products from the database
-        List<Product> products = userDbHelper.getProducts(sqLiteDatabase);
+        List<Product> products = UserDBHelper.getProducts(sqLiteDatabase);
 
         // empty listDataAdapter before filling adapter with new values from database
         listDataAdapter = new ListDataAdapter(this.getContext(), R.layout.row_layout);

@@ -4,10 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Path;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,28 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.Vector;
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ConnectscreenFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ConnectscreenFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ConnectscreenFragment extends Fragment {
 
     private static Button motionButton;
     private static Button joystickButton;
     private static Button followButton;
     private static Button shoppinglistButton;
-    private static Path iconFollow;
     private static TextView connectionText;
     private static TextView connectText;
     private static ProgressBar progressBar;
@@ -48,19 +32,6 @@ public class ConnectscreenFragment extends Fragment {
 
     public ConnectscreenFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment ConnectscreenFragment.
-     */
-    public static ConnectscreenFragment newInstance() {
-        ConnectscreenFragment fragment = new ConnectscreenFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -81,7 +52,26 @@ public class ConnectscreenFragment extends Fragment {
 
     // change button state when bluetooth connection state changes
     public void changeButtonState(boolean isConnected) {
-        if(isConnected){
+        if(!BasketDrawer.fakeConnection) {
+            if (isConnected) {
+                motionButton.setEnabled(true);
+                joystickButton.setEnabled(true);
+                followButton.setEnabled(true);
+                connectText.setText("");
+                connectionText.setText("");
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
+                connectionlayout.setBackgroundResource(R.drawable.connected);
+            } else {
+                motionButton.setEnabled(false);
+                joystickButton.setEnabled(false);
+                followButton.setEnabled(false);
+                connectText.setText("Connecting");
+                connectionText.setText("Establishing Bluetooth Connection...");
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+                connectionlayout.setBackgroundResource(R.drawable.connect);
+            }
+        }
+        else{
             motionButton.setEnabled(true);
             joystickButton.setEnabled(true);
             followButton.setEnabled(true);
@@ -90,20 +80,10 @@ public class ConnectscreenFragment extends Fragment {
             progressBar.setVisibility(ProgressBar.INVISIBLE);
             connectionlayout.setBackgroundResource(R.drawable.connected);
         }
-        else{
-            motionButton.setEnabled(false);
-            joystickButton.setEnabled(false);
-            followButton.setEnabled(false);
-            connectText.setText("Connecting");
-            connectionText.setText("Establishing Bluetooth Connection...");
-            progressBar.setVisibility(ProgressBar.VISIBLE);
-            connectionlayout.setBackgroundResource(R.drawable.connect);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_connectscreen, container, false);
 
@@ -130,6 +110,7 @@ public class ConnectscreenFragment extends Fragment {
         }
         // set initial button state
         changeButtonState(isConnected);
+        BasketDrawer.buttonState = false;
         return view;
     }
 
@@ -183,21 +164,13 @@ public class ConnectscreenFragment extends Fragment {
         });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -226,16 +199,6 @@ public class ConnectscreenFragment extends Fragment {
         super.onStop();
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
