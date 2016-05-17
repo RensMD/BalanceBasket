@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.group21.balancebasket.BasketDrawer"/>
+      <point      
+        x = "2892"      
+        y = "256"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.group21.balancebasket.Welcome_Activity"/>
+      <point      
+        x = "1024"      
+        y = "184"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.group21.balancebasket.FollowFragment"/>
+      <point      
+        x = "4820"      
+        y = "1136"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.group21.balancebasket.Bluetooth"/>
+      <point      
+        x = "-640"      
+        y = "-640"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
